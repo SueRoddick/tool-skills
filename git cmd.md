@@ -345,4 +345,5 @@ $ git config --global alias.br branch                 git branch==git br
  10  SSH key（配置好服务器后，提交或者读取需要密码时，此方法也可解决）
 
   ① $ ssh-keygen -t rsa -C "youremail@example.com"  \\生成SSH Key。在windows下查看[c盘->用户->自己的用户名->.ssh]，id_rsa私钥、id_rsa.pub公钥
+  
   ②登录github。打开setting->SSH keys，点击右上角 New SSH key，把生成好的公钥id_rsa.pub放进 key输入框中，再为当前的key起一个title来区分每个key。
