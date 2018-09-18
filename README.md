@@ -102,11 +102,16 @@ $ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版�
 
 git reset --soft
 move HEAD to specific commit reference, index and staging are untouched.
+
 git reset --hard
 unstage files AND undo any changes in the working directory since last commit.
+
 使用git reset —hard HEAD进行reset,即上次提交之后,所有staged的改动和工作目录的改动都会消失,还原到上次提交的状态.
+
 这里的HEAD可以被写成任何一次提交的SHA-1.
+
 不带soft和hard参数的git reset,实际上带的是默认参数mixed.
+
 
      总结:
      git reset --mixed id,是将git的HEAD变了(也就是提交记录变了),但文件并没有改变，(也就是working tree并没有改变). 取消了commit和add的内容.
