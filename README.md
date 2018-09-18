@@ -37,11 +37,16 @@ Initialized empty Git repository in /Users/michael/文件夹名/.git/
 第二步是用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支。
 
 $ git add <file> 文件名   // 添加文件
+  
 $ git commit -m <message>  //提交文件，-m后面输入的是本次提交的说明，可以输入任意内容 （-m 后面可不要）
+  
 $ git status  //命令查看仓库当前的状态
-​     git status -s: -s表示short, -s的输出标记会有两列,第一列是对staging区域而言,第二列是对working目录而言.
+
+git status -s: -s表示short, -s的输出标记会有两列,第一列是对staging区域而言,第二列是对working目录而言.
 $ git diff <file> //查看修改的内容
+  
   //git diff HEAD -- <file>//命令可以查看工作区和版本库里面最新版本的区别(HEAD表示最新的版本)
+  
 
      不加参数的git diff:
      show diff of unstaged changes.
@@ -75,34 +80,39 @@ $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“�
 命令git checkout -- <file>意思就是，把<file>文件在工作区的修改全部撤销，这里有两种情况：
 
 一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
+
 一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
 总之，就是让这个文件回到最近一次git commit或git add时的状态
 
 $ git pull
 
 ​     fetch from a remote repo and try to merge into the current branch.
+
 ​     pull == fetch + merge FETCH_HEAD
 
 ​     git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
 
 ​     如果使用--rebase参数,它会执行git rebase来取代原来的git merge.
-​	 
-​	 
-$ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（unstage），重新放回工作区
-$ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版本 commit_id输入版本的前几个字符就可以
-git reset
 
-​     undo changes and commits.
-​     这里的HEAD关键字指的是当前分支最末梢最新的一个提交.也就是版本库中该分支上的最新版本.
-​     git reset HEAD: unstage files from index and reset pointer to HEAD
-​     这个命令用来把不小心add进去的文件从staged状态取出来,可以单独针对某一个文件操作: git reset HEAD - - filename, 这个- - 也可以不加.
-​     git reset --soft
-​     move HEAD to specific commit reference, index and staging are untouched.
-​     git reset --hard
-​     unstage files AND undo any changes in the working directory since last commit.
-​     使用git reset —hard HEAD进行reset,即上次提交之后,所有staged的改动和工作目录的改动都会消失,还原到上次提交的状态.
-​     这里的HEAD可以被写成任何一次提交的SHA-1.
-​     不带soft和hard参数的git reset,实际上带的是默认参数mixed.
+$ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（unstage），重新放回工作区
+  
+$ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版本 commit_id输入版本的前几个字符就可以
+
+git reset
+undo changes and commits.
+这里的HEAD关键字指的是当前分支最末梢最新的一个提交.也就是版本库中该分支上的最新版本.
+
+ git reset HEAD: unstage files from index and reset pointer to HEAD
+这个命令用来把不小心add进去的文件从staged状态取出来,可以单独针对某一个文件操作: git reset HEAD - - filename, 这个- - 也可以不加.
+git reset --soft
+move HEAD to specific commit reference, index and staging are untouched.
+
+git reset --hard
+unstage files AND undo any changes in the working directory since last commit.
+使用git reset —hard HEAD进行reset,即上次提交之后,所有staged的改动和工作目录的改动都会消失,还原到上次提交的状态.
+这里的HEAD可以被写成任何一次提交的SHA-1.
+不带soft和hard参数的git reset,实际上带的是默认参数mixed.
 
      总结:
      git reset --mixed id,是将git的HEAD变了(也就是提交记录变了),但文件并没有改变，(也就是working tree并没有改变). 取消了commit和add的内容.
