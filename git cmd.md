@@ -283,24 +283,36 @@ $ git stash  把当前的改动压入一个栈.
 ```
 
 7创建标签
+
 命令git tag <tagname> <commit_id>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
+  
 命令git tag -a <tagname> -m "XXXX..."可以指定标签信息；
+  
 命令git tag可以查看所有标签。
 
 命令git push origin <tagname>可以推送一个本地标签；
+  
 命令git push origin --tags可以推送全部未推送过的本地标签；
+
 命令git tag -d <tagname>可以删除一个本地标签；
+  
 命令git push origin :refs/tags/<tagname>可以删除一个远程标签
+  
 
 8配置别名
+
 $ git config --global alias.st status                 git status ==git st
+
 $ git config --global alias.co checkout               git checkout==git co  
+
 $ git config --global alias.ci commit                 git commit==git ci  
+
 $ git config --global alias.br branch                 git branch==git br  
 
 
 
 9常用命令
+```
   mkdir：         XX (创建一个空目录XX指目录名)
    pwd：          显示当前目录的路径。
    git init          把当前的目录变成可以管理的git仓库，生成隐藏.git文件。
@@ -328,7 +340,7 @@ $ git config --global alias.br branch                 git branch==git br
    git remote –v 查看远程库的详细信息
    git push originmaster  Git会把master分支推送到远程库对应的远程分支上 
 
-   
+   ```
 
  10  SSH key（配置好服务器后，提交或者读取需要密码时，此方法也可解决）
 
