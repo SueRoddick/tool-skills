@@ -68,15 +68,22 @@ $ git log --pretty=oneline  //可以查看提交历史，以便确定要回退�
 $ git reflog查看命令历史，以便确定要回到未来的哪个版本
 
 $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令
+  
 命令git checkout -- <file>意思就是，把<file>文件在工作区的修改全部撤销，这里有两种情况：
+  
 一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
 一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
+
 总之，就是让这个文件回到最近一次git commit或git add时的状态
 
 $ git pull
+
 ​     fetch from a remote repo and try to merge into the current branch.
+
 ​     pull == fetch + merge FETCH_HEAD
+
 ​     git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
+
 ​     如果使用--rebase参数,它会执行git rebase来取代原来的git merge.
 ​	 
 ​	 
