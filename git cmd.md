@@ -16,6 +16,7 @@ git config --global  --list
 查看当前仓库配置信息
 git config --local  --list
 ```
+
 2、创建空仓库  
 $ mkdir 文件夹名         //注：自己创建文件夹目录（文件夹名尽量不要用中文）
 
@@ -28,7 +29,8 @@ $ git init     //通过git init命令把这个目录变成Git可以管理的仓�
 在本地新建一个repo,进入一个项目目录,执行git init,会初始化一个repo,并在当前文件夹下创建一个.git文件夹.
 Initialized empty Git repository in /Users/michael/文件夹名/.git/
 
-3 文件操作
+
+3、 文件操作
 【工作区，版本库（暂存区（stage），master）】//创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改
 
 把文件往Git版本库里添加的时候，是分两步执行的：
@@ -139,7 +141,8 @@ $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
  git rm --cached: 从staging区移除文件,但留在工作目录中.
  git rm --cached从功能上等同于git reset HEAD,清除了缓存区,但不动工作目录树
 ```
-   4 GitHub上建立远程库
+
+ 4 、GitHub上建立远程库
 ```
    $ git remote add 远程库名 git@github.com:用户名/仓库名.git   //建立远程库
    $ git remote   //查看远程库信息   后面加参数-v查看更详细信息
@@ -184,15 +187,16 @@ $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
 
 
 
+5、 从远程库克隆
 
-
-   5 从远程库克隆
    git clone git@github.com:用户名/远程库名.git
 
    要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。
    Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
 
-6创建与合并分支
+
+6、创建与合并分支
+
 ```
 查看分支：git branch
 
@@ -293,7 +297,8 @@ $ git stash  把当前的改动压入一个栈.
  git stash clear: 删除所有项目.
 ```
 
-7创建标签
+
+7、创建标签
 ```
 命令git tag <tagname> <commit_id>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
   
@@ -310,7 +315,8 @@ $ git stash  把当前的改动压入一个栈.
 命令git push origin :refs/tags/<tagname>可以删除一个远程标签
   ```
 
-8配置别名
+
+8、配置别名
 ```
 $ git config --global alias.st status                 git status ==git st
 
@@ -322,7 +328,7 @@ $ git config --global alias.br branch                 git branch==git br
 ```
 
 
-9常用命令
+9、常用命令
 ```
   mkdir：         XX (创建一个空目录XX指目录名)
    pwd：          显示当前目录的路径。
@@ -353,7 +359,7 @@ $ git config --global alias.br branch                 git branch==git br
 
    ```
 
- 10  SSH key（配置好服务器后，提交或者读取需要密码时，此方法也可解决）
+ 10 、 SSH key（配置好服务器后，提交或者读取需要密码时，此方法也可解决）
 
   ① $ ssh-keygen -t rsa -C "youremail@example.com"  \\生成SSH Key。在windows下查看[c盘->用户->自己的用户名->.ssh]，id_rsa私钥、id_rsa.pub公钥
   
