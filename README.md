@@ -38,48 +38,44 @@ $ git status  //命令查看仓库当前的状态
 $ git diff <file> //查看修改的内容
   //git diff HEAD -- <file>//命令可以查看工作区和版本库里面最新版本的区别(HEAD表示最新的版本)
 
-```
- 不加参数的git diff:
- show diff of unstaged changes.
- 此命令比较的是工作目录中当前文件和暂存区域快照之间的差异,也就是修改之后还没有暂存起来的变化内容.
- 
- 若要看已经暂存起来的文件和上次提交时的快照之间的差异,可以用:
- git diff --cached 命令.
- show diff of staged changes.
- (Git 1.6.1 及更高版本还允许使用 git diff --staged，效果是相同的).
- 
- git diff HEAD
- show diff of all staged or unstated changes.
- 也即比较woking directory和上次提交之间所有的改动.
- 
- 如果想看自从某个版本之后都改动了什么,可以用:
- git diff [version tag]
- 跟log命令一样,diff也可以加上--stat参数来简化输出.
- 
- git diff [branchA] [branchB]可以用来比较两个分支.
- 它实际上会返回一个由A到B的patch,不是我们想要的结果.
- 一般我们想要的结果是两个分支分开以后各自的改动都是什么,是由命令:
- git diff [branchA]…[branchB]给出的.
- 实际上它是:git diff $(git merge-base [branchA] [branchB]) [branchB]的结果.
-```
+     不加参数的git diff:
+     show diff of unstaged changes.
+     此命令比较的是工作目录中当前文件和暂存区域快照之间的差异,也就是修改之后还没有暂存起来的变化内容.
+     
+     若要看已经暂存起来的文件和上次提交时的快照之间的差异,可以用:
+     git diff --cached 命令.
+     show diff of staged changes.
+     (Git 1.6.1 及更高版本还允许使用 git diff --staged，效果是相同的).
+     
+     git diff HEAD
+     show diff of all staged or unstated changes.
+     也即比较woking directory和上次提交之间所有的改动.
+     
+     如果想看自从某个版本之后都改动了什么,可以用:
+     git diff [version tag]
+     跟log命令一样,diff也可以加上--stat参数来简化输出.
+     
+     git diff [branchA] [branchB]可以用来比较两个分支.
+     它实际上会返回一个由A到B的patch,不是我们想要的结果.
+     一般我们想要的结果是两个分支分开以后各自的改动都是什么,是由命令:
+     git diff [branchA]…[branchB]给出的.
+     实际上它是:git diff $(git merge-base [branchA] [branchB]) [branchB]的结果.
 
 $ git log --pretty=oneline  //可以查看提交历史，以便确定要回退到哪个版本  【--pretty=oneline参数可选，显示最近一个log】
 
 $ git reflog查看命令历史，以便确定要回到未来的哪个版本
 
 $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令
-  
+
 命令git checkout -- <file>意思就是，把<file>文件在工作区的修改全部撤销，这里有两种情况：
-  
+
 一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
 一种是file已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。
-
 总之，就是让这个文件回到最近一次git commit或git add时的状态
 
 $ git pull
 
 ​     fetch from a remote repo and try to merge into the current branch.
-
 ​     pull == fetch + merge FETCH_HEAD
 
 ​     git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
@@ -90,6 +86,7 @@ $ git pull
 $ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（unstage），重新放回工作区
 $ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版本 commit_id输入版本的前几个字符就可以
 git reset
+
 ​     undo changes and commits.
 ​     这里的HEAD关键字指的是当前分支最末梢最新的一个提交.也就是版本库中该分支上的最新版本.
 ​     git reset HEAD: unstage files from index and reset pointer to HEAD
@@ -102,14 +99,12 @@ git reset
 ​     这里的HEAD可以被写成任何一次提交的SHA-1.
 ​     不带soft和hard参数的git reset,实际上带的是默认参数mixed.
 
-```
- 总结:
- git reset --mixed id,是将git的HEAD变了(也就是提交记录变了),但文件并没有改变，(也就是working tree并没有改变). 取消了commit和add的内容.
- git reset --soft id. 实际上，是git reset –mixed id 后,又做了一次git add.即取消了commit的内容.
- git reset --hard id.是将git的HEAD变了,文件也变了.
- 按改动范围排序如下:
- soft (commit) < mixed (commit + add) < hard (commit + add + local working)
-```
+     总结:
+     git reset --mixed id,是将git的HEAD变了(也就是提交记录变了),但文件并没有改变，(也就是working tree并没有改变). 取消了commit和add的内容.
+     git reset --soft id. 实际上，是git reset –mixed id 后,又做了一次git add.即取消了commit的内容.
+     git reset --hard id.是将git的HEAD变了,文件也变了.
+     按改动范围排序如下:
+     soft (commit) < mixed (commit + add) < hard (commit + add + local working)
 
 $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
 ​     git rm file: 从staging区移除文件,同时也移除出工作目录.
@@ -137,6 +132,7 @@ $ git pull <远程主机名> <远程分支名>
 
 git fetch命令用于从另一个存储库下载对象和引用
 
+
 git fetch和git pull的区别
 git fetch：相当于是从远程获取最新版本到本地，不会自动合并。
 $ git fetch origin master
@@ -153,7 +149,7 @@ $ git fetch origin master:tmp
 $ git diff tmp 
 $ git merge tmp
 
-1. git pull：相当于是从远程获取最新版本并merge到本地
+2. git pull：相当于是从远程获取最新版本并merge到本地
 
 git pull origin master
 上述命令其实相当于git fetch 和 git merge
@@ -165,6 +161,7 @@ git pull origin master
 
 5 从远程库克隆
 git clone git@github.com:用户名/远程库名.git
+
 
 要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。
 Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
@@ -209,11 +206,13 @@ bug分支
 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场
 
+
 本地新建的分支如果不推送到远程，对其他人就是不可见的；
 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
 在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
 建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
 
 $ git stash  把当前的改动压入一个栈.
 ​     git stash将会把当前目录和index中的所有改动(但不包括未track的文件)压入一个栈,然后留给你一个clean的工作状态,即处于上一次最新提交处.
@@ -222,11 +221,10 @@ $ git stash  把当前的改动压入一个栈.
 ​     也可以指定别的项目,比如git stash apply stash@{1}.
 ​     如果你在应用stash中项目的同时想要删除它,可以用git stash pop
 
-```
- 删除stash中的项目:
- git stash drop: 删除上一个,也可指定参数删除指定的一个项目.
- git stash clear: 删除所有项目.
-```
+     删除stash中的项目:
+     git stash drop: 删除上一个,也可指定参数删除指定的一个项目.
+     git stash clear: 删除所有项目.
+
 
 7创建标签
 命令git tag <tagname> <commit_id>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
