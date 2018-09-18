@@ -85,9 +85,8 @@ $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“�
 总之，就是让这个文件回到最近一次git commit或git add时的状态
 
 $ git pull
-
-   fetch from a remote repo and try to merge into the current branch.
-  pull == fetch + merge FETCH_HEAD
+fetch from a remote repo and try to merge into the current branch.
+pull == fetch + merge FETCH_HEAD
 
 git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
 $ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（unstage），重新放回工作区  
