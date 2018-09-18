@@ -1,5 +1,5 @@
-## 1、
-安装完成后，在开始菜单里找到“Git”->“Git Bash”,进一步设置，在命令行输入：
+## 1、 安装配置 
+网上找资源下载安装完成后，在开始菜单里找到“Git”->“Git Bash”,进一步设置，在命令行输入：
 ```
 $ git config --global user.name "Your Name"
 $ git config --global user.email "email@example.com"
