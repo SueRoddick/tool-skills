@@ -183,35 +183,59 @@ git branch -a :查看全部分支（远程的和本地的）
 解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交（add，commit）。
 用git log --graph命令可以看到分支合并图。
 git log
+
 ​     show commit history of a branch.
+
 ​     git log --oneline --number: 每条log只显示一行,显示number条.
+
 ​     git log --oneline --graph:可以图形化地表示出分支合并历史.
+
 ​     git log branchname可以显示特定分支的log.
+
 ​     git log --oneline branch1 ^branch2,可以查看在分支1,却不在分支2中的提交.^表示排除这个分支(Window下可能要给^branch2加上引号).
+
 ​     git log --decorate会显示出tag信息.
+
 ​     git log --author=[author name] 可以指定作者的提交历史.
+
 ​     git log --since --before --until --after 根据提交时间筛选log.
+
 ​     --no-merges可以将merge的commits排除在外.
+
 ​     git log --grep 根据commit信息过滤log: git log --grep=keywords
+
 ​     默认情况下, git log --grep --author是OR的关系,即满足一条即被返回,如果你想让它们是AND的关系,可以加上--all-match的option.
+
 ​     git log -S: filter by introduced diff.
+
 ​     比如: git log -SmethodName (注意S和后面的词之间没有等号分隔).
+
 ​     git log -p: show patch introduced at each commit.
+
 ​     每一个提交都是一个快照(snapshot),Git会把每次提交的diff计算出来,作为一个patch显示给你看.
+
 ​     另一种方法是git show [SHA].
 ​     git log --stat: show diffstat of changes introduced at each commit.
 ​     同样是用来看改动的相对信息的,--stat比-p的输出更简单一些.
 
 bug分支
+
 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
+
 当手头工作没有完成时，先把工作现场git stash一下，然后去修复bug，修复后，再git stash pop，回到工作现场
 
 
+
 本地新建的分支如果不推送到远程，对其他人就是不可见的；
+
 从本地推送分支，使用git push origin branch-name，如果推送失败，先用git pull抓取远程的新提交；
+
 在本地创建和远程分支对应的分支，使用git checkout -b branch-name origin/branch-name，本地和远程分支的名称最好一致；
+
 建立本地分支和远程分支的关联，使用git branch --set-upstream branch-name origin/branch-name；
+
 从远程抓取分支，使用git pull，如果有冲突，要先处理冲突。
+
 
 
 $ git stash  把当前的改动压入一个栈.
