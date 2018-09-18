@@ -85,14 +85,15 @@ $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“�
 总之，就是让这个文件回到最近一次git commit或git add时的状态
 
 $ git pull
-fetch from a remote repo and try to merge into the current branch.
-pull == fetch + merge FETCH_HEAD
 
+fetch from a remote repo and try to merge into the current branch.
+
+pull == fetch + merge FETCH_HEAD
 git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
 $ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（unstage），重新放回工作区  
 $ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版本 commit_id输入版本的前几个字符就可以
   
- git reset
+  git reset
   undo changes and commits.
 这里的HEAD关键字指的是当前分支最末梢最新的一个提交.也就是版本库中该分支上的最新版本
  git reset HEAD: unstage files from index and reset pointer to HEAD
