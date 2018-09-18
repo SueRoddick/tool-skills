@@ -41,29 +41,40 @@ $ git status  //命令查看仓库当前的状态
 git status -s: -s表示short, -s的输出标记会有两列,第一列是对staging区域而言,第二列是对working目录而言.
 $ git diff <file> //查看修改的内容
 ```
-  //git diff HEAD -- <file>//命令可以查看工作区和版本库里面最新版本的区别(HEAD表示最新的版本)
+git diff HEAD -- <file>//命令可以查看工作区和版本库里面最新版本的区别(HEAD表示最新的版本)
 
  不加参数的git diff:
+ 
  show diff of unstaged changes.
+ 
  此命令比较的是工作目录中当前文件和暂存区域快照之间的差异,也就是修改之后还没有暂存起来的变化内容.
  
  若要看已经暂存起来的文件和上次提交时的快照之间的差异,可以用:
+ ```
  git diff --cached 命令.
  show diff of staged changes.
  (Git 1.6.1 及更高版本还允许使用 git diff --staged，效果是相同的).
- 
+ ```
  git diff HEAD
+ 
  show diff of all staged or unstated changes.
+ 
  也即比较woking directory和上次提交之间所有的改动.
  
  如果想看自从某个版本之后都改动了什么,可以用:
+ 
  git diff [version tag]
+ 
  跟log命令一样,diff也可以加上--stat参数来简化输出.
  
  git diff [branchA] [branchB]可以用来比较两个分支.
+ 
  它实际上会返回一个由A到B的patch,不是我们想要的结果.
+ 
  一般我们想要的结果是两个分支分开以后各自的改动都是什么,是由命令:
+ 
  git diff [branchA]…[branchB]给出的.
+ 
  实际上它是:git diff $(git merge-base [branchA] [branchB]) [branchB]的结果.
 ```
 
@@ -87,13 +98,16 @@ fetch from a remote repo and try to merge into the current branch.
 
 pull == fetch + merge FETCH_HEAD
 
-git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.    
+git pull会首先执行git fetch,然后执行git merge,把取来的分支的head merge到当前分支.这个merge操作会产生一个新的commit.   
+
 $ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（unstage），重新放回工作区  
+  
 $ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版本 commit_id输入版本的前几个字符就可以
 
   git reset
   undo changes and commits.
   这里的HEAD关键字指的是当前分支最末梢最新的一个提交.也就是版本库中该分支上的最新版本
+  
   git reset HEAD: unstage files from index and reset pointer to HEAD
 这个命令用来把不小心add进去的文件从staged状态取出来,可以单独针对某一个文件操作: git reset HEAD - - filename, 这个- - 也可以不加.
 ```
@@ -119,11 +133,12 @@ unstage files AND undo any changes in the working directory since last commit.
 ```
 
 $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
-
-​     git rm file: 从staging区移除文件,同时也移除出工作目录.
-​     git rm --cached: 从staging区移除文件,但留在工作目录中.
-​     git rm --cached从功能上等同于git reset HEAD,清除了缓存区,但不动工作目录树
-
+  
+```
+  git rm file: 从staging区移除文件,同时也移除出工作目录.
+ git rm --cached: 从staging区移除文件,但留在工作目录中.
+ git rm --cached从功能上等同于git reset HEAD,清除了缓存区,但不动工作目录树
+```
    4 GitHub上建立远程库
 ```
    $ git remote add 远程库名 git@github.com:用户名/仓库名.git   //建立远程库
@@ -202,9 +217,8 @@ git branch -a :查看全部分支（远程的和本地的）
 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交（add，commit）。
 用git log --graph命令可以看到分支合并图。
-git log
-
 ```
+git log
  show commit history of a branch.
 
  git log --oneline --number: 每条log只显示一行,显示number条.
