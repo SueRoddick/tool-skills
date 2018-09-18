@@ -265,10 +265,16 @@ bug分支
 
 $ git stash  把当前的改动压入一个栈.
 ​     git stash将会把当前目录和index中的所有改动(但不包括未track的文件)压入一个栈,然后留给你一个clean的工作状态,即处于上一次最新提交处.
+
 ​     git stash list会显示这个栈的list.
+
 ​     git stash apply:取出stash中的上一个项目(stash@{0}),并且应用于当前的工作目录.
+
 ​     也可以指定别的项目,比如git stash apply stash@{1}.
+
 ​     如果你在应用stash中项目的同时想要删除它,可以用git stash pop
+
+
 
 ```
  删除stash中的项目:
