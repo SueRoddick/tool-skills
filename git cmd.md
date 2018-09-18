@@ -180,17 +180,26 @@ $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
    要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。
    Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
 
-   6创建与合并分支
-查看分支：git branch
-创建分支：git branch <name>
-切换分支：git checkout <name>
-创建+切换分支：git checkout -b <name>
-合并某分支到当前分支：git merge <name>  //合并分支时；提示Already up-to-date，但是代码没合并时，切回主分支，执行命令git reset --hard 分支名;
-删除分支：git branch -d <name>   //当d为大写D时，表示强制删除
+6创建与合并分支
 
+查看分支：git branch
+
+创建分支：git branch <name>
+  
+切换分支：git checkout <name>
+  
+创建+切换分支：git checkout -b <name>
+  
+合并某分支到当前分支：git merge <name>  //合并分支时；提示Already up-to-date，但是代码没合并时，切回主分支，执行命令git reset --hard 分支名;
+  
+删除分支：git branch -d <name>   //当d为大写D时，表示强制删除
+  
 git branch -l :查看本地分支
+
 git branch -r :查看远程分支
+
 git branch -a :查看全部分支（远程的和本地的）
+
 
 解决冲突
 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
