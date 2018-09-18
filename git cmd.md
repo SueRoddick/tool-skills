@@ -1,4 +1,4 @@
-1、
+## 1、
 安装完成后，在开始菜单里找到“Git”->“Git Bash”,进一步设置，在命令行输入：
 ```
 $ git config --global user.name "Your Name"
@@ -17,7 +17,7 @@ git config --global  --list
 git config --local  --list
 ```
 
-2、创建空仓库  
+## 2、创建空仓库  
 $ mkdir 文件夹名         //注：自己创建文件夹目录（文件夹名尽量不要用中文）
 
 $ cd 文件夹名         //注：进入进创建的文件夹
@@ -30,7 +30,7 @@ $ git init     //通过git init命令把这个目录变成Git可以管理的仓�
 Initialized empty Git repository in /Users/michael/文件夹名/.git/
 
 
-3、 文件操作
+## 3、 文件操作
 【工作区，版本库（暂存区（stage），master）】//创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改
 
 把文件往Git版本库里添加的时候，是分两步执行的：
@@ -43,7 +43,8 @@ $ git status  //命令查看仓库当前的状态
 git status -s: -s表示short, -s的输出标记会有两列,第一列是对staging区域而言,第二列是对working目录而言.
 $ git diff <file> //查看修改的内容
 ```
-git diff HEAD -- <file>//命令可以查看工作区和版本库里面最新版本的区别(HEAD表示最新的版本)
+#### git diff HEAD -- <file>
+ //命令可以查看工作区和版本库里面最新版本的区别(HEAD表示最新的版本)
 
  不加参数的git diff:
  
@@ -79,14 +80,15 @@ git diff HEAD -- <file>//命令可以查看工作区和版本库里面最新版�
  
  实际上它是:git diff $(git merge-base [branchA] [branchB]) [branchB]的结果.
 ```
-
+####  git log 
 $ git log --pretty=oneline  //可以查看提交历史，以便确定要回退到哪个版本  【--pretty=oneline参数可选，显示最近一个log】
 
 $ git reflog查看命令历史，以便确定要回到未来的哪个版本
 
 $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“切换到另一个分支”的命令
 ```
-命令git checkout -- <file>意思就是，把<file>文件在工作区的修改全部撤销，这里有两种情况：
+#### 命令git checkout -- <file>
+ 意思就是，把<file>文件在工作区的修改全部撤销，这里有两种情况：
 
 一种是file自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库一模一样的状态；
 
@@ -94,7 +96,7 @@ $ git checkout -- <file> //命令中的--很重要，没有--，就变成了“�
 
 总之，就是让这个文件回到最近一次git commit或git add时的状态
 
-$ git pull
+#### $ git pull
 
 fetch from a remote repo and try to merge into the current branch.
 
@@ -106,7 +108,7 @@ $ git reset HEAD <file>//commit之前 可以把暂存区的修改撤销掉（uns
   
 $ git reset --hard commit_id  //切换版本 HEAD指向的版本就是当前版本 commit_id输入版本的前几个字符就可以
 
-  git reset
+####   git reset
   undo changes and commits.
   这里的HEAD关键字指的是当前分支最末梢最新的一个提交.也就是版本库中该分支上的最新版本
   
@@ -134,7 +136,7 @@ unstage files AND undo any changes in the working directory since last commit.
  soft (commit) < mixed (commit + add) < hard (commit + add + local working)
 ```
 
-$ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
+#### $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
   
 ```
   git rm file: 从staging区移除文件,同时也移除出工作目录.
@@ -142,7 +144,7 @@ $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
  git rm --cached从功能上等同于git reset HEAD,清除了缓存区,但不动工作目录树
 ```
 
- 4 、GitHub上建立远程库
+## 4 、GitHub上建立远程库
 ```
    $ git remote add 远程库名 git@github.com:用户名/仓库名.git   //建立远程库
    $ git remote   //查看远程库信息   后面加参数-v查看更详细信息
@@ -187,7 +189,7 @@ $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
 
 
 
-5、 从远程库克隆
+## 5、 从远程库克隆
 
    git clone git@github.com:用户名/远程库名.git
 
@@ -195,7 +197,7 @@ $ git rm  -- <file>   //删除文件   注：删掉后必须Git commit
    Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快
 
 
-6、创建与合并分支
+## 6、创建与合并分支
 
 ```
 查看分支：git branch
@@ -217,12 +219,12 @@ git branch -r :查看远程分支
 git branch -a :查看全部分支（远程的和本地的）
 ```
 
-解决冲突
+#### 解决冲突
 当Git无法自动合并分支时，就必须首先解决冲突。解决冲突后，再提交，合并完成。
 解决冲突就是把Git合并失败的文件手动编辑为我们希望的内容，再提交（add，commit）。
 用git log --graph命令可以看到分支合并图。
 ```
-git log
+#### git log
  show commit history of a branch.
 
  git log --oneline --number: 每条log只显示一行,显示number条.
@@ -258,7 +260,7 @@ git log
  同样是用来看改动的相对信息的,--stat比-p的输出更简单一些.
 ```
 
-bug分支
+#### bug分支
 
 修复bug时，我们会通过创建新的bug分支进行修复，然后合并，最后删除；
 
@@ -278,7 +280,7 @@ bug分支
 
 
 
-$ git stash  把当前的改动压入一个栈.
+#### $ git stash  把当前的改动压入一个栈.
 ​     git stash将会把当前目录和index中的所有改动(但不包括未track的文件)压入一个栈,然后留给你一个clean的工作状态,即处于上一次最新提交处.
 
 ​     git stash list会显示这个栈的list.
@@ -298,7 +300,7 @@ $ git stash  把当前的改动压入一个栈.
 ```
 
 
-7、创建标签
+## 7、创建标签
 ```
 命令git tag <tagname> <commit_id>用于新建一个标签，默认为HEAD，也可以指定一个commit id；
   
@@ -316,7 +318,7 @@ $ git stash  把当前的改动压入一个栈.
   ```
 
 
-8、配置别名
+## 8、配置别名
 ```
 $ git config --global alias.st status                 git status ==git st
 
@@ -328,7 +330,7 @@ $ git config --global alias.br branch                 git branch==git br
 ```
 
 
-9、常用命令
+## 9、常用命令
 ```
   mkdir：         XX (创建一个空目录XX指目录名)
    pwd：          显示当前目录的路径。
@@ -359,7 +361,7 @@ $ git config --global alias.br branch                 git branch==git br
 
    ```
 
- 10 、 SSH key（配置好服务器后，提交或者读取需要密码时，此方法也可解决）
+ ## 10 、 SSH key（配置好服务器后，提交或者读取需要密码时，此方法也可解决）
 
   ① $ ssh-keygen -t rsa -C "youremail@example.com"  \\生成SSH Key。在windows下查看[c盘->用户->自己的用户名->.ssh]，id_rsa私钥、id_rsa.pub公钥
   
