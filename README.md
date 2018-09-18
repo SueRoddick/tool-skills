@@ -17,11 +17,15 @@ git config --global  --list
 git config --local  --list
 
 2、创建空仓库  
-$ mkdir 文件夹名  //注：自己创建文件夹目录（文件夹名尽量不要用中文）
-$ cd 文件夹名    //注：进入进创建的文件夹
-$ pwd
+$ mkdir 文件夹名         //注：自己创建文件夹目录（文件夹名尽量不要用中文）
+
+$ cd 文件夹名         //注：进入进创建的文件夹
+
+$ pwd 
 /Users/michael/文件夹名
+
 $ git init     //通过git init命令把这个目录变成Git可以管理的仓库
+
 ​     在本地新建一个repo,进入一个项目目录,执行git init,会初始化一个repo,并在当前文件夹下创建一个.git文件夹.
 Initialized empty Git repository in /Users/michael/文件夹名/.git/
 
